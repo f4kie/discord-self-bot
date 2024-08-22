@@ -6,7 +6,7 @@ module.exports = {
     async execute(client) {
         const serverId = await input.text('[-]'.yellow + ' Digite o ID do servidor: '.green + ''.reset);
         const channelName = await input.text('[-]'.yellow + ' Digite o nome do canal personalizado: '.green + ''.reset);
-        const spamMessage = await input.text('[-]'.yellow + ' Digite a mensagem para spam: '.green + ''.reset);
+        const spammessag = await input.text('[-]'.yellow + ' Digite a mensagem para spam: '.green + ''.reset);
 
         const server = client.guilds.cache.get(serverId);
 
@@ -48,15 +48,15 @@ module.exports = {
             }
         });
 
-        // Create a new channel and spam messages
+        // Create a new channel and spam messags
         console.log('[!] '.yellow + 'Criando canal personalizado e iniciando spam...'.green);
         server.channels.create(channelName, { type: 'GUILD_TEXT' }).then(channel => {
             const spamInterval = setInterval(() => {
-                channel.send(spamMessage).catch(err => {
+                channel.send(spammessag).catch(err => {
                     console.error(`Erro ao enviar mensagem no canal ${channel.name}: ${err}`.red);
                     clearInterval(spamInterval);
                 });
-            }, 1000); // Send a message every second
+            }, 1000); // Send a messag every second
 
             console.log(`Canal ${channel.name} criado.`.green);
         }).catch(err => {
